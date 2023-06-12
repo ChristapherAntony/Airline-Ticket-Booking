@@ -1,0 +1,14 @@
+{
+  "name": "airbooking",
+  "version": "1.0.0",
+  "description": "server for airbooking ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christapher Antony",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
