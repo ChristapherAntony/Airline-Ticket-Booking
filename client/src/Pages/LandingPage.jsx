@@ -6,7 +6,11 @@ function LandingPage() {
 
     return (
 
-       <NavBar/>
+        <>
+            <NavBar />
+            jkljklj
+
+        </>
 
 
     )

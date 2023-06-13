@@ -19,7 +19,7 @@ function GoogleAuth() {
     const clientId = import.meta.env.VITE_REACT_APP_GOOGLE_CLIENT_ID;
 
 
-    const redirectPath = (location.state )?.path || '/'
+    const redirectPath = (location.state)?.path || '/'
 
 
     const handleLoginSuccess = async (response) => {
@@ -58,6 +58,8 @@ function GoogleAuth() {
         setError('Failed to log in');
     };
 
+   
+
     return (
         // className='flex items-center justify-center '
         <div className='flex items-center justify-center '>
@@ -76,6 +78,8 @@ function GoogleAuth() {
                     {error}
                 </div>
             )}
+
+
 
 
         </div>

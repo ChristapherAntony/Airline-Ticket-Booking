@@ -1,6 +1,4 @@
-import GoogleAuth from "./GoogleAuth"
 import Login2 from "./Modals/Login2"
-
 
 
 function NavBar() {
@@ -22,7 +20,7 @@ function NavBar() {
 
                 <div className="flex items-center md:order-2">
 
-                    {/* <GoogleAuth/> */}
+
                     {isLoggedIn ? (
 
                         <button
@@ -41,9 +39,10 @@ function NavBar() {
                             />
                         </button>
                     ) : (
-                        <Login2 />
 
+                        <Login2 />
                     )}
+
 
                     {/* Dropdown menu */}
                     <div

@@ -14,12 +14,12 @@ import store from './Redux/store.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     {/* <PersistGate loading={null} persistor={persistor}> */}
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <BrowserRouter>
           <App />
           <ToastContainer />
         </BrowserRouter>
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     {/* </PersistGate> */}
   </Provider>
 )
