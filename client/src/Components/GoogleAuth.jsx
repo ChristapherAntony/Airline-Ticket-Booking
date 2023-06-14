@@ -18,6 +18,7 @@ function GoogleAuth() {
     const location = useLocation();
     const [error, setError] = useState(null);
     const dispatch = useDispatch()
+
     const clientId = import.meta.env.VITE_REACT_APP_GOOGLE_CLIENT_ID;
 
 
@@ -31,27 +32,12 @@ function GoogleAuth() {
         //send token to server
 
         googleAuth(token).then((response) => {
-            console.log(response.data.existingUser);
-            // need to handle tehe response
 
-            // {
-            //     email
-            //     :
-            //     "christapher012@gmail.com"
-            //     is_email_verified
-            //     :
-            //     true
-            //     profile_image
-            //     :
-            //     "https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
-            //     user_name
-            //     :
-            //     "User"
-            //     _id
-            //     :
-            //     "6489dea551cd2bf51a6940f1"
-            // }
-            
+            const { user_name, email, profile_image } = response.data.existingUser
+            // need to handle the response
+            dispatch(changeUserProfile({ user_name, email, profile_image, isLoggedIn:true }));
+
+
         }).catch((error) => {
             console.log(error);
             errorTost('Google auth failed !')

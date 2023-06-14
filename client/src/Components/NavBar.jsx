@@ -1,9 +1,13 @@
+import { useSelector } from "react-redux";
 import Login2 from "./Modals/Login2"
+import LogOut from "./Buttons/LogOut";
 
 
 function NavBar() {
-    const isLoggedIn = false
-    
+    // Access the user profile state from redux
+    const userProfile = useSelector((state) => state.userprofile);
+
+    const { user_name, email, profile_image, isLoggedIn } = userProfile
 
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -25,7 +29,7 @@ function NavBar() {
 
                     {isLoggedIn ? (
                         <>
-                            <span className="pr-2" >User name</span>
+                            <span className="pr-2" >{user_name}</span>
                             <button
                                 type="button"
                                 className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -37,10 +41,13 @@ function NavBar() {
                                 <span className="sr-only">Open user menu</span>
                                 <img
                                     className="w-8 h-8 rounded-full"
-                                    src="https://flowbite.com/docs/images/logo.svg"
+                                    // src="https://flowbite.com/docs/images/logo.svg"
+                                    src={profile_image}
                                     alt="user photo"
                                 />
                             </button>
+                            <LogOut />
+
 
                         </>
 
