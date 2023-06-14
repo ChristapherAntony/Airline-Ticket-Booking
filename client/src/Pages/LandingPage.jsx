@@ -8,7 +8,7 @@ function LandingPage() {
 
         <>
             <NavBar />
-            jkljklj
+           
 
         </>
 

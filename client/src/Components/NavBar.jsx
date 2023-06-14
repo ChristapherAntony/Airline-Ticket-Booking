@@ -9,7 +9,8 @@ function NavBar() {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="/" className="flex items-center">
                     <img
-                        src="https://5.imimg.com/data5/NU/VZ/AY/SELLER-2624985/flight-air-ticket-booking-api-500x500.png"
+                        // src="https://5.imimg.com/data5/NU/VZ/AY/SELLER-2624985/flight-air-ticket-booking-api-500x500.png"
+                        src="https://img.freepik.com/free-vector/detailed-travel-logo_23-2148616611.jpg?w=740&t=st=1686710311~exp=1686710911~hmac=f8c117b2e6da4931aba051ec70ca4d52412d71af5f3838d992ff0e5cc2ba5fe7"
                         className="h-14 mr-3"
                         alt="Flowbite Logo"
                     />
