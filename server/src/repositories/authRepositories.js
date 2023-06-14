@@ -7,8 +7,8 @@ const authRepositories = {
         return await User.findOne({ email });;
     },
 
-    createUserByEmail: async (email) => {
-        const user = new User({ email });
+    createUserByEmail: async (userEntity) => {
+        const user = new User(userEntity);
         return await user.save();
     },
 

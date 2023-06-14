@@ -25,31 +25,32 @@ function GoogleAuth() {
     const handleLoginSuccess = async (response) => {
         dispatch(changeLoading(true));
         const token = response.credential;
+        window.alert(token)
         console.log(token);
         //send token to server
 
-        axios.get('/'(token)).then((response) => {
-            const user = response.data.data
-            if (response.status === 200) {
-                //if user exists response is jwt with credentials we need to dispatch and navigate to home
-                const userName = user.profile_name
-                const userEmail = user.email
-                const userPhoto = user.profile_image
-                const userPhone = user.phone_number
-                dispatch(changeUserProfile({ userName, userEmail, userPhoto, userPhone }))
+        // axios.get('/'(token)).then((response) => {
+        //     const user = response.data.data
+        //     if (response.status === 200) {
+        //         //if user exists response is jwt with credentials we need to dispatch and navigate to home
+        //         const userName = user.profile_name
+        //         const userEmail = user.email
+        //         const userPhoto = user.profile_image
+        //         const userPhone = user.phone_number
+        //         dispatch(changeUserProfile({ userName, userEmail, userPhoto, userPhone }))
 
-                navigate(redirectPath, { replace: true })
-                dispatch(changeLoading(false));
-            } else if (response.status === 202) {
-                //else, navigate to addProfile page with data received in search params
+        //         navigate(redirectPath, { replace: true })
+        //         dispatch(changeLoading(false));
+        //     } else if (response.status === 202) {
+        //         //else, navigate to addProfile page with data received in search params
 
-                navigate('/register/add-profile', { state: user })
-                dispatch(changeLoading(false));
-            }
-        }).catch((error) => {
-            console.log(error);
-            // errorTost('Google auth failed !')
-        })
+        //         navigate('/register/add-profile', { state: user })
+        //         dispatch(changeLoading(false));
+        //     }
+        // }).catch((error) => {
+        //     console.log(error);
+        //     // errorTost('Google auth failed !')
+        // })
 
     };
 

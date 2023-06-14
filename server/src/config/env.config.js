@@ -11,6 +11,8 @@ const config = {
         admin: "admin",
         user: "user",
     },
+    googleClintID: process.env.GOOGLEOAUTH_CLIENT_ID,
+    googleClintSecret: process.env.GOOGLEOAUTH_CLIENT_SECRET
 
 };
 
