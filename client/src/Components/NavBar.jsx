@@ -3,6 +3,7 @@ import Login2 from "./Modals/Login2"
 
 function NavBar() {
     const isLoggedIn = false
+    
 
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -23,22 +24,26 @@ function NavBar() {
 
 
                     {isLoggedIn ? (
+                        <>
+                            <span className="pr-2" >User name</span>
+                            <button
+                                type="button"
+                                className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                                id="user-menu-button"
+                                aria-expanded="false"
+                                data-dropdown-toggle="user-dropdown"
+                                data-dropdown-placement="bottom"
+                            >
+                                <span className="sr-only">Open user menu</span>
+                                <img
+                                    className="w-8 h-8 rounded-full"
+                                    src="https://flowbite.com/docs/images/logo.svg"
+                                    alt="user photo"
+                                />
+                            </button>
 
-                        <button
-                            type="button"
-                            className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                            id="user-menu-button"
-                            aria-expanded="false"
-                            data-dropdown-toggle="user-dropdown"
-                            data-dropdown-placement="bottom"
-                        >
-                            <span className="sr-only">Open user menu</span>
-                            <img
-                                className="w-8 h-8 rounded-full"
-                                src="https://flowbite.com/docs/images/logo.svg"
-                                alt="user photo"
-                            />
-                        </button>
+                        </>
+
                     ) : (
 
                         <Login2 />

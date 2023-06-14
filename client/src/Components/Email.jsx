@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react"
 import { CgSpinner } from "react-icons/cg";
+import { emailVerify, registerWithEmail } from "../api/axiosCalls/auth";
 
 function Email({ setEnterOTP }) {
     const [loading, setLoading] = useState(false)
@@ -11,14 +12,23 @@ function Email({ setEnterOTP }) {
     const sendOTP = (email) => {
         //send email to server ...
 
-        setLoading(false)
+        registerWithEmail(email).then((res) => {
+            console.log(res);
+            setLoading(false)
+        }).catch((err) => {
+            console.log(err);
+            // setError()
+            setLoading(false)
+        })
+
+
+        
     }
 
     const handleNextButton = () => {
         setLoading(true)
         //validate email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
         if (emailRegex.test(email)) {
             sendOTP(email)
             setEnterOTP()
@@ -29,7 +39,6 @@ function Email({ setEnterOTP }) {
             setTimeout(() => {
                 setError(null);
             }, 4000);
-
         }
     }
     return (
@@ -75,7 +84,7 @@ function Email({ setEnterOTP }) {
                 </button>
             </div>
 
-            {error ? (<div className="text-red-500 text-sm"> {error} </div>):(<div className="text-blue-500 text-sm">Please enter email to continue..</div>)}
+            {error ? (<div className="text-red-500 text-sm"> {error} </div>) : (<div className="text-blue-500 text-sm">Please enter email to continue..</div>)}
         </div>
     )
 }

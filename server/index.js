@@ -9,6 +9,7 @@ import helmet from "helmet";
 import cookieParser from 'cookie-parser'
 import routes from "./src/routes/routes.js";
 import authenticate from "./src/middlewares/authenticate.js";
+import corsOptions from "./src/config/cors.options.js";
 
 
 
@@ -16,11 +17,7 @@ const app = express()
 const router = express.Router()
 
 //middleware
-app.use(cors({
-    origin: ['http://localhost:3000'],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true
-}))
+app.use(cors(corsOptions))
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
@@ -31,8 +28,6 @@ app.use(authenticate())
 
 //routes
 routes(app, router);
-
-
 
 //errorHandling middleware 
 app.use(errorHandlingMiddleware)

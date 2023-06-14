@@ -9,6 +9,8 @@ import { changeUserProfile } from '../Redux/userProfileReducer';
 
 import { changeLoading } from '../Redux/loadingReducer';
 import axios from 'axios';
+import { googleAuth } from '../api/axiosCalls/auth';
+import { errorTost } from './tost';
 
 
 function GoogleAuth() {
@@ -19,38 +21,41 @@ function GoogleAuth() {
     const clientId = import.meta.env.VITE_REACT_APP_GOOGLE_CLIENT_ID;
 
 
-    const redirectPath = (location.state)?.path || '/'
+
 
 
     const handleLoginSuccess = async (response) => {
         dispatch(changeLoading(true));
         const token = response.credential;
-        window.alert(token)
-        console.log(token);
+
         //send token to server
 
-        // axios.get('/'(token)).then((response) => {
-        //     const user = response.data.data
-        //     if (response.status === 200) {
-        //         //if user exists response is jwt with credentials we need to dispatch and navigate to home
-        //         const userName = user.profile_name
-        //         const userEmail = user.email
-        //         const userPhoto = user.profile_image
-        //         const userPhone = user.phone_number
-        //         dispatch(changeUserProfile({ userName, userEmail, userPhoto, userPhone }))
+        googleAuth(token).then((response) => {
+            console.log(response.data.existingUser);
+            // need to handle tehe response
 
-        //         navigate(redirectPath, { replace: true })
-        //         dispatch(changeLoading(false));
-        //     } else if (response.status === 202) {
-        //         //else, navigate to addProfile page with data received in search params
-
-        //         navigate('/register/add-profile', { state: user })
-        //         dispatch(changeLoading(false));
-        //     }
-        // }).catch((error) => {
-        //     console.log(error);
-        //     // errorTost('Google auth failed !')
-        // })
+            // {
+            //     email
+            //     :
+            //     "christapher012@gmail.com"
+            //     is_email_verified
+            //     :
+            //     true
+            //     profile_image
+            //     :
+            //     "https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png"
+            //     user_name
+            //     :
+            //     "User"
+            //     _id
+            //     :
+            //     "6489dea551cd2bf51a6940f1"
+            // }
+            
+        }).catch((error) => {
+            console.log(error);
+            errorTost('Google auth failed !')
+        })
 
     };
 
@@ -59,7 +64,7 @@ function GoogleAuth() {
         setError('Failed to log in');
     };
 
-   
+
 
     return (
         // className='flex items-center justify-center '

@@ -8,7 +8,6 @@ import config from '../config/env.config.js';
 const authController = {
 
     googleAuth: asyncHandler(async (req, res, next) => {
-
         const { googleToken } = req.body
         if (!googleToken) {
             throw new ERROR.BadRequestError('Google auth faild! Token undefined')
@@ -45,15 +44,8 @@ const authController = {
             roles: [config.authRoles.user]
         }
         const token = await authServices.generateToken(payload)
-
-
         //attach to http only cookie 
         authServices.attachTokenToCookie('jwt', token, res)
-
-
-
-
-
 
         return res.status(200).json({ message: 'Login successful', existingUser });
     }),

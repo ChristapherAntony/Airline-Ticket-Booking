@@ -1,5 +1,5 @@
 const authorize = (requiredRoles) => (req, res, next) => {
-
+    console.log('api call in ##############');
     const currentUser = req.currentUser;
 
     if (!currentUser) {
