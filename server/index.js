@@ -8,6 +8,9 @@ import mongoSanitize from 'express-mongo-sanitize'
 import helmet from "helmet";
 import cookieParser from 'cookie-parser'
 import routes from "./src/routes/routes.js";
+import authenticate from "./src/middlewares/authenticate.js";
+
+
 
 const app = express()
 const router = express.Router()
@@ -24,6 +27,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet({ xssFilter: true }))
 app.use(mongoSanitize())
+app.use(authenticate())
 
 //routes
 routes(app, router);

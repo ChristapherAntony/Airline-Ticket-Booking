@@ -1,16 +1,15 @@
-
+import authController from "../controllers/authController.js";
+import { validateEmail,validateOTP } from "../middlewares/validate.js";
 
 const authRouter = (router) => {
 
-    //log hai
-    router.route('/hi').get((req, res) => {
-        res.send('hai');
-    });
+  // Register email route with the validateEmail middleware
+  router.route('/email-register').post(validateEmail, authController.emailRegister);
 
-    
+  router.route('/email-verify').post(validateOTP, authController.emailVerifyAndLogin);
+  
 
-
-    return router;
+  return router;
 }
 
 export default authRouter;

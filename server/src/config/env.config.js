@@ -3,7 +3,15 @@ dotenv.config();
 
 const config = {
     port: process.env.PORT || 9000,
-    mongoURI: process.env.MONGODB_URI
+    mongoURI: process.env.MONGODB_URI,
+    nodeMailerGmailPassword: process.env.NODE_MAILER_GMAIL_PASSWORD,
+    jwtSecret: process.env.JWT_SECRET,
+    nodeEnvironment: process.env.NODE_ENV,
+    authRoles: {
+        admin: "admin",
+        user: "user",
+    },
+
 };
 
 export default config;
