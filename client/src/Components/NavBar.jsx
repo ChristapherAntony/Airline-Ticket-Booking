@@ -1,13 +1,21 @@
 import { useSelector } from "react-redux";
 import Login2 from "./Modals/Login2"
 import LogOut from "./Buttons/LogOut";
+import { useEffect } from "react";
 
 
 function NavBar() {
     // Access the user profile state from redux
-    const userProfile = useSelector((state) => state.userprofile);
 
+
+    const userProfile = useSelector((state) => state.userprofile);
     const { user_name, email, profile_image, isLoggedIn } = userProfile
+
+
+    useEffect(() => {
+        
+
+    }, [userProfile]);
 
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -59,7 +67,7 @@ function NavBar() {
 
                     {/* Dropdown menu */}
                     <div
-                        className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                        className="z-50  my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                         id="user-dropdown"
                     >
                         <div className="px-4 py-3">
