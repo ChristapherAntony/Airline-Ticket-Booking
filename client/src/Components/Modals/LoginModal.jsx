@@ -9,6 +9,7 @@ import Email from '../Email';
 function LoginModal({showLogin}) {
 
     const [enterOTP, setEnterOTP] = useState(false)
+    const [email,setEmail]=useState("")
 
     // useEffect(() => {
     //     setEnterOTP(false)
@@ -32,11 +33,14 @@ function LoginModal({showLogin}) {
                             {/* Left Side */}
                             <div className="p-6 md:p-20">
 
-                                {enterOTP ? (
-                                    <Otp setEnterOTP={() => setEnterOTP(false)} />
+                                {enterOTP ? ( 
+                                    <Otp setEnterOTP={() => setEnterOTP(false)}  email={email}/>
                                 ) : (
 
-                                    <Email setEnterOTP={() => setEnterOTP(true)} />
+                                    <Email setEnterOTP={(email) => {
+                                        setEnterOTP(true);
+                                        setEmail(email);
+                                      }} />
 
                                 )}
 

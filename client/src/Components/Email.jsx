@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { CgSpinner } from "react-icons/cg";
 import { emailVerify, registerWithEmail } from "../api/axiosCalls/auth";
+import { successTost } from "./tost";
 
 function Email({ setEnterOTP }) {
     const [loading, setLoading] = useState(false)
@@ -11,18 +12,16 @@ function Email({ setEnterOTP }) {
 
     const sendOTP = (email) => {
         //send email to server ...
-
         registerWithEmail(email).then((res) => {
-            console.log(res);
+            // console.log(res);
+            successTost("OTP send successfully ")
             setLoading(false)
+            setEnterOTP(email)
         }).catch((err) => {
-            console.log(err);
-            // setError()
+            // console.log(err);
+            setError("Something went wrong")
             setLoading(false)
         })
-
-
-        
     }
 
     const handleNextButton = () => {
@@ -31,7 +30,8 @@ function Email({ setEnterOTP }) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (emailRegex.test(email)) {
             sendOTP(email)
-            setEnterOTP()
+            // getEmail(email)
+           
         } else {
             setLoading(false)
             setError('Please enter a valid email...')

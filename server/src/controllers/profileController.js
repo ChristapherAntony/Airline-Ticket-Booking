@@ -8,7 +8,7 @@ const profileController = {
 
         //image from file
         const file = req.file
-        if (!file) throw new ERROR.BadRequestError('image  required ')
+        // if (!file) throw new ERROR.BadRequestError('image  required ')
         // image upload S3 -- pending !!!!
         //
         //-----------------------------

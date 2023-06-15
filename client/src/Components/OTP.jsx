@@ -1,31 +1,59 @@
+/* eslint-disable no-undef */
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { OtpInput } from 'reactjs-otp-input';
 import { CgSpinner } from "react-icons/cg";
+import { emailVerify } from '../api/axiosCalls/auth';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeUserProfile } from '../Redux/userProfileReducer';
 
-function Otp({ setEnterOTP }) {
+function Otp({ setEnterOTP, email }) {
     const [loading, setLoading] = useState(false)
-    const [error,SetError]=useState('')
+    const [error, SetError] = useState('')
     const [otp, setOTP] = useState("")
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
-    
+
+
 
     const handleSendOtp = () => {
-        setLoading(true)
-        //send otp to server for verifying opt
 
+        setLoading(true);
+        // send otp to server for verifying otp
+        emailVerify(email, otp).then((res) => {
+            const { user_name, email, profile_image, is_profile_updated } = res.data.updatedUser
+            //update the redux store user profile
+            dispatch(changeUserProfile({ user_name, email, profile_image, isLoggedIn: true }));
 
-        //on response navigate
-        setLoading(false)
-    }
+            if (!is_profile_updated) {
+                // need to update profile
+                navigate('/update-profile')
+            } else {
+                navigate('/')
+            }
+            setLoading(false);
+
+        }).catch((err) => {
+            setLoading(false);
+            SetError(err.message)
+            setTimeout(() => {
+                SetError(null);
+            }, 3000);
+
+        })
+    };
+
 
     return (
         <div>
             <h2 className="font-mono mb-5 text-4xl font-bold">Log In</h2>
             <p className="max-w-sm mb-12 font-sans font-light text-gray-600">
-                Please enter the OTP sended to the email <br /> <button onClick={() => setEnterOTP()} className='text-blue-600'>  change email</button>
+                Please enter the OTP sended to {email} <br /> <button onClick={() => setEnterOTP()} className='text-blue-600'>  change email</button>
             </p>
 
 
@@ -70,6 +98,8 @@ function Otp({ setEnterOTP }) {
                 </button>
 
             </div>
+            {error ? (<div className="text-red-500 text-sm"> {error} </div>) : (<div className="text-blue-500 text-sm">Please enter otp to continue..</div>)}
+
 
         </div>
     )

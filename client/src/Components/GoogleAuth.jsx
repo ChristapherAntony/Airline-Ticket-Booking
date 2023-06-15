@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { GoogleLogin } from '@react-oauth/google';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { changeUserProfile } from '../Redux/userProfileReducer';
 import { changeLoading } from '../Redux/loadingReducer';
@@ -21,9 +21,19 @@ function GoogleAuth() {
 
         //send token to server
         googleAuth(token).then((response) => {
-            const { user_name, email, profile_image } = response.data.existingUser
+            const { user_name, email, profile_image, is_profile_updated } = response.data.existingUser
             // need to handle the response
-            dispatch(changeUserProfile({ user_name, email, profile_image, isLoggedIn:true }));
+            dispatch(changeUserProfile({ user_name, email, profile_image, isLoggedIn: true }));
+
+
+            if (!is_profile_updated) {
+                // need to update profile
+                navigate('/update-profile')
+            } else {
+                navigate('/')
+            }
+
+
         }).catch((error) => {
             console.log(error);
             errorTost('Google auth failed !')

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import Login2 from "./Modals/Login2"
 import { useEffect, useState } from "react";
 import ProfileDrop from "./Modals/ProfileDrop";
+import { Link } from "react-router-dom";
 
 
 function NavBar() {
@@ -19,7 +20,7 @@ function NavBar() {
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="/" className="flex items-center">
+                <Link to="/" className="flex items-center">
                     <img
                         // src="https://5.imimg.com/data5/NU/VZ/AY/SELLER-2624985/flight-air-ticket-booking-api-500x500.png"
                         src="https://img.freepik.com/free-vector/detailed-travel-logo_23-2148616611.jpg?w=740&t=st=1686710311~exp=1686710911~hmac=f8c117b2e6da4931aba051ec70ca4d52412d71af5f3838d992ff0e5cc2ba5fe7"
@@ -29,7 +30,7 @@ function NavBar() {
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                         AirBooking
                     </span>
-                </a>
+                </Link>
 
                 <div className="flex items-center md:order-2">
 

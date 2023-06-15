@@ -24,6 +24,11 @@ const UserSchema = new Schema(
             type: Boolean,
             required: true,
             default: false
+        },
+        is_profile_updated: {
+            type: Boolean,
+            required: true,
+            default: false
         }
     }
 );

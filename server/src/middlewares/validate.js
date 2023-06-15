@@ -4,10 +4,24 @@ import { body, validationResult } from 'express-validator';
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
+    // Format validation errors into a readable format
+    const formattedErrors = errors.array().map((error) => {
+      return {
+        field: error.param,
+        message: error.msg,
+      };
+    });
+
+    return res.status(422).json({
+      error: {
+        message: 'Otp is invalided',
+        details: formattedErrors,
+      },
+    });
   }
   next();
 };
+
 
 // Define validation and sanitization rules for the signin endpoint
 const validateEmail = [
