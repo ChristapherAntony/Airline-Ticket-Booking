@@ -7,7 +7,7 @@ function convertDuration(duration) {
     const durationInMinutes = moment.duration(duration);
     const formattedDuration = moment.utc(durationInMinutes.asMilliseconds()).format("HH[h] mm[m]");
     return formattedDuration;
-  }
+}
 
 function Card({ data }) {
     // Example usage
@@ -19,9 +19,9 @@ function Card({ data }) {
     const { attributes: departureAirport } = airports.findWhere({ iata: departure.iataCode });
 
     const convertedDuration = convertDuration(duration)
+    const travelersCount = data.travelerPricings.length
+    const price = data.price.grandTotal
 
-
-    console.log(number, aircraft);
     return (
 
         <div className="group relative overflow-hidden bg-white shadow hover:shadow-md  hover:-mt-2 rounded-md transition-all duration-500 h-fit">
@@ -40,23 +40,15 @@ function Card({ data }) {
                         >
                             {airlines.Airline}
                         </a>
-                        {/* <span className="inline-block text-sm px-2 text-slate-400">
-                            23/458/1521
-                        </span>
-                        <div className='space-x-3'>
-                            <span className="bg-blue-600/10 inline-block text-blue-600 text-xs px-2.5 py-0.5 font-semibold rounded-full ltr:mr-1 rtl:ml-1">
-                                full time
-                            </span>
-                            <span className="text-sm font-medium inline-block ltr:mr-1 rtl:ml-1">
-                                JobOpening:{" "}
-                                <span className="text-slate-400">23</span>
-                            </span>
-                            <span className="text-sm font-medium inline-block ltr:mr-1 rtl:ml-1">
-                                Base salary:{" "}
-                                <span className="text-slate-400">₹2322323</span>
-                            </span>
-                        </div> */}
+
                     </div>
+                  
+                  
+
+                        <span className='absolute right-80'>Adults:{travelersCount}</span>
+                  
+                  
+                    <span className='absolute right-7'>Total Price: {price}</span>
                 </div>
 
 
@@ -104,7 +96,7 @@ function Card({ data }) {
                         <i className="uil uil-map-marker text-[18px] text-slate-900  ltr:mr-1 rtl:ml-1" />
                         aircraft {aircraft.code}-{number}
                     </span>
-                </div>  
+                </div>
 
                 <div
 
