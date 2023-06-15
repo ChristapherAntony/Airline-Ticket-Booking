@@ -12,7 +12,10 @@ const config = {
         user: "user",
     },
     googleClintID: process.env.GOOGLEOAUTH_CLIENT_ID,
-    googleClintSecret: process.env.GOOGLEOAUTH_CLIENT_SECRET
+    googleClintSecret: process.env.GOOGLEOAUTH_CLIENT_SECRET,
+    amadeusApiKey: process.env.AMADEUS_API_KEY,
+    amadeusApiSecret: process.env.AMADEUS_API_SECRET,
+
 
 };
 
