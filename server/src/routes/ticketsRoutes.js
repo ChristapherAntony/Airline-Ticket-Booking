@@ -4,7 +4,7 @@ const ticketsRoutes = (router) => {
     
     
     //public route  search the tickets by filter
-    router.route('/').get(ticketsController.search);
+    router.route('/').post(ticketsController.search);
 
 
 

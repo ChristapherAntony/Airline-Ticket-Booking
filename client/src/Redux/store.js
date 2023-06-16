@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import userProfileReducer from './userProfileReducer';
 import loadingReducer from './loadingReducer';
+import searchKeyReducer from './searchKeyReducer';
 
 const persistConfig = {
   key: 'root',
@@ -13,6 +14,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   userprofile: userProfileReducer,
   loading: loadingReducer,
+  searchkey:searchKeyReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

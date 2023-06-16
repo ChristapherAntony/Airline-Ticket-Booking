@@ -6,3 +6,4 @@ export const PROFILE_UPDATE = `/profile`;
 export const LOG_OUT = `/auth/logout`;
 export const GOOGLE_AUTH = `/auth/google`;
 
+export const OFFERS = `/tickets`;

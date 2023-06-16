@@ -3,10 +3,11 @@ import amadeusServices from "../services/amadeusServices.js";
 
 const ticketsController = {
     search: expressAsyncHandler(async (req, res, next) => {
-        const payload = req.query;
-
+        console.log("api dhasdjaslkj");
+         const {searchKey} = req.body;
+        console.log(searchKey);
         // Get data from amadeus
-        const data = await amadeusServices.flightOffersSearch(payload);
+        const data = await amadeusServices.flightOffersSearch(searchKey);
         const count = data.length;
 
         const response = {

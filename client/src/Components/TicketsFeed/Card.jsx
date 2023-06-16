@@ -17,11 +17,13 @@ function Card({ data }) {
     const airlines = airline(carrierCode)[0];//get air line details
     const { attributes: arrivalAirport } = airports.findWhere({ iata: arrival.iataCode });
     const { attributes: departureAirport } = airports.findWhere({ iata: departure.iataCode });
+    const travelClass = data.travelerPricings[0].fareDetailsBySegment[0].cabin
+
 
     const convertedDuration = convertDuration(duration)
     const travelersCount = data.travelerPricings.length
     const price = data.price.grandTotal
-
+    console.log(travelClass);
     return (
 
         <div className="group relative overflow-hidden bg-white shadow hover:shadow-md  hover:-mt-2 rounded-md transition-all duration-500 h-fit">
@@ -42,12 +44,12 @@ function Card({ data }) {
                         </a>
 
                     </div>
-                  
-                  
 
-                        <span className='absolute right-80'>Adults:{travelersCount}</span>
-                  
-                  
+
+
+                    <span className='absolute right-80'>Adults:{travelersCount}</span>
+
+
                     <span className='absolute right-7'>Total Price: {price}</span>
                 </div>
 
@@ -87,15 +89,18 @@ function Card({ data }) {
                 </div> */}
             </div>
             <div className="px-6 py-2 bg-slate-50  flex justify-between items-center">
-                <div className='space-x-2'>
+                <div className='space-x-2 grid grid-flow-col'>
+
+
+                    <span > <img src="https://cdn-icons-png.flaticon.com/512/951/951334.png" width={20} alt="" /></span>
                     <span className="inline-block ltr:mr-1 rtl:ml-1 font-semibold">
-                        <i className="mdi mdi-check-decagram mdi-18px text-blue-500 ltr:mr-1 rtl:ml-1" />
-                        {name}
+                        {travelClass}
                     </span>
                     <span className="inline-block ltr:mr-1 rtl:ml-1 text-slate-400">
                         <i className="uil uil-map-marker text-[18px] text-slate-900  ltr:mr-1 rtl:ml-1" />
-                        aircraft {aircraft.code}-{number}
+                        {aircraft.code}-{number}
                     </span>
+                    {/* <span>{travelClass}</span> */}
                 </div>
 
                 <div

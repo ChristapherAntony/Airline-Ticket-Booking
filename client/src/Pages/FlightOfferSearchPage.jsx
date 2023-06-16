@@ -1,21 +1,16 @@
 import FlightOfferSearchForm from "../Components/FlighOfferSearchForm/FlightOfferSearchForm"
 import NavBar from "../Components/NavBar"
+import TicketsFeed from "../Components/TicketsFeed/TicketsFeed"
 
 
-
-function LandingPage() {
-
+function FlightOfferSearchPage() {
     return (
-
         <>
             <NavBar />
-            <FlightOfferSearchForm/>
-           
-
+            <FlightOfferSearchForm />
+            <TicketsFeed />
         </>
-
-
     )
 }
 
-export default LandingPage
+export default FlightOfferSearchPage

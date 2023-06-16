@@ -29,15 +29,15 @@ const amadeusServices = {
                 originLocationCode,
                 destinationLocationCode,
                 departureDate,
-                returnDate,
-                adults,
-                max,
+                // returnDate:null,
+                adults:payload?.adults || 1,
+                max:15,
                 includedAirlineCodes,
-                currencyCode,
+                currencyCode:"INR",
                 nonStop,
                 maxPrice:payload?.maxPrice,
                 maxNumberOfConnections:payload?.maxNumberOfConnections,
-                travelClass:payload?.travelClass || "ECONOMY",
+                travelClass:payload?.travelClass ,
             });
 
          
