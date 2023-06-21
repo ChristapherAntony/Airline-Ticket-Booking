@@ -15,6 +15,7 @@ const config = {
     googleClintSecret: process.env.GOOGLEOAUTH_CLIENT_SECRET,
     amadeusApiKey: process.env.AMADEUS_API_KEY,
     amadeusApiSecret: process.env.AMADEUS_API_SECRET,
+    allowedOrigins: process.env.ALLOWED_ORIGINS.split(',')
 
 
 };

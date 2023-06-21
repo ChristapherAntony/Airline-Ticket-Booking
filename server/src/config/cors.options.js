@@ -1,7 +1,8 @@
-const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
+import config from "./env.config";
+
 
 const corsOptions = {
-    origin: allowedOrigins,
+    origin: config.allowedOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true
 };
