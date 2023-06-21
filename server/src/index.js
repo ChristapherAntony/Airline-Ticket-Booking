@@ -15,7 +15,7 @@ import corsOptions from "./config/cors.options.js";
 
 const app = express()
 const router = express.Router()
-   
+
 //middleware
 app.use(cors(corsOptions))
 app.use(morgan('dev'));
@@ -35,7 +35,7 @@ app.use(errorHandlingMiddleware)
 
 // Start server
 const start = async () => {
-    connectDb();
+    await connectDb();
     app.listen(config.port, () => {
         console.log(`Server listening on port ${config.port}...✅ `);
     });

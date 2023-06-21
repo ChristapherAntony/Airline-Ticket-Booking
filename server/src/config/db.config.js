@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import config from './env.config.js';
 
 
-const connectDb = () => {
+const connectDb = async () => {
   // Connect to MongoDB
   mongoose.connect(config.mongoURI, {
     useNewUrlParser: true,
