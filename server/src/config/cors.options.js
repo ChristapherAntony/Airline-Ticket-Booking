@@ -1,5 +1,7 @@
+const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
+
 const corsOptions = {
-    origin: ['http://localhost:3000'],
+    origin: allowedOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true
 };
