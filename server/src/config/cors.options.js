@@ -1,4 +1,4 @@
-import config from "./env.config";
+import config from "./env.config.js";
 
 
 const corsOptions = {
