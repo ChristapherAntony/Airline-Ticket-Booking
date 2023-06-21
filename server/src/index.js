@@ -15,7 +15,7 @@ import corsOptions from "./config/cors.options.js";
 
 const app = express()
 const router = express.Router()
-
+   
 //middleware
 app.use(cors(corsOptions))
 app.use(morgan('dev'));
