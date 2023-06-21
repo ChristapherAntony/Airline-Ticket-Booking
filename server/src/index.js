@@ -1,15 +1,15 @@
 import express from "express";
-import connectDb from "./src/config/db.config.js";
-import config from "./src/config/env.config.js";
-import errorHandlingMiddleware from "./src/middlewares/errorHandlingMiddleware.js";
+import connectDb from "./config/db.config.js";
+import config from "./config/env.config.js";
+import errorHandlingMiddleware from "./middlewares/errorHandlingMiddleware.js";
 import morgan from 'morgan'
 import cors from 'cors'
 import mongoSanitize from 'express-mongo-sanitize'
 import helmet from "helmet";
 import cookieParser from 'cookie-parser'
-import routes from "./src/routes/routes.js";
-import authenticate from "./src/middlewares/authenticate.js";
-import corsOptions from "./src/config/cors.options.js";
+import routes from "./routes/routes.js";
+import authenticate from "./middlewares/authenticate.js";
+import corsOptions from "./config/cors.options.js";
 
 
 
